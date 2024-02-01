@@ -3,14 +3,20 @@ import 'package:unicorn_app/models/models.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;
-  const ProductCard({super.key, required this.product});
+  final double widthFactor;
+  const ProductCard({
+    super.key,
+    required this.product,
+    this.widthFactor = 2.5,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final double widthValue = MediaQuery.of(context).size.width / widthFactor;
     return Stack(
       children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width / 2.5,
+          width: widthValue,
           height: 250,
           child: Image.network(
             product.imgUrl,

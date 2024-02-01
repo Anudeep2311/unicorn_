@@ -21,8 +21,20 @@ class CatalogPage extends StatelessWidget {
         title: category.name,
       ),
       bottomNavigationBar: const CustomBottomAppBar(),
-      body: ProductCard(
-        product: ProductModel.products[0],
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.15,
+        ),
+        itemCount: 3,
+        itemBuilder: (BuildContext context, int index) {
+          return Center(
+            child: ProductCard(
+              product: ProductModel.products[0],
+              widthFactor: 2.2,
+            ),
+          );
+        },
       ),
     );
   }
