@@ -10,11 +10,9 @@ abstract class WishlistState extends Equatable {
 class WishlistLoading extends WishlistState {}
 
 class WishlistLoaded extends WishlistState {
-  final WishlistModel wishlist;
+  WishlistModel? wishlist;
 
-  const WishlistLoaded({this.wishlist})
+  WishlistLoaded({this.wishlist});
 }
 
 class WishlistError extends WishlistState {}
-
-
