@@ -16,21 +16,26 @@ class CatalogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<ProductModel> categoryProducts = ProductModel.products
+        .where((product) => product.category == category.name)
+        .toList();
     return Scaffold(
       appBar: CustomAppBar(
         title: category.name,
       ),
       bottomNavigationBar: const CustomBottomAppBar(),
       body: GridView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 1.15,
+          childAspectRatio: 0.8,
+          mainAxisSpacing: 10,
         ),
-        itemCount: 3,
+        itemCount: categoryProducts.length,
         itemBuilder: (BuildContext context, int index) {
           return Center(
             child: ProductCard(
-              product: ProductModel.products[0],
+              product: categoryProducts[index],
               widthFactor: 2.2,
             ),
           );
