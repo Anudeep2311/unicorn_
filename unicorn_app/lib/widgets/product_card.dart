@@ -4,10 +4,14 @@ import 'package:unicorn_app/models/models.dart';
 class ProductCard extends StatelessWidget {
   final ProductModel product;
   final double widthFactor;
+  final double leftPosition;
+  final bool isWishlist;
   const ProductCard({
     super.key,
     required this.product,
-    this.widthFactor = 2.5,
+    this.widthFactor = 2.2,
+    this.leftPosition = 5,
+    this.isWishlist = false,
   });
 
   @override
@@ -32,21 +36,22 @@ class ProductCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 170,
+            top: 150,
+            left: 5,
             child: Container(
-              width: MediaQuery.of(context).size.width / 2.5,
-              height: 80,
+              width: widthValue - 5,
+              height: 90,
               decoration: BoxDecoration(
                 color: Colors.black.withAlpha(95),
               ),
             ),
           ),
           Positioned(
-            top: 175,
-            left: 5,
+            top: 155,
+            left: 10,
             child: Container(
-              width: MediaQuery.of(context).size.width / 2.5 - 10,
-              height: 70,
+              width: widthValue - 10,
+              height: 80,
               decoration: const BoxDecoration(
                 color: Colors.black,
               ),
@@ -89,6 +94,17 @@ class ProductCard extends StatelessWidget {
                         ),
                       ),
                     ),
+                    isWishlist
+                        ? Expanded(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        : const SizedBox(),
                   ],
                 ),
               ),
