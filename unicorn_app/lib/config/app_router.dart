@@ -17,7 +17,7 @@ class AppRouter {
       case CartPage.routeName:
         return CartPage.route();
       case ProductPage.routeName:
-        return ProductPage.route();
+        return ProductPage.route(product: settings.arguments as ProductModel);
       case WishlistPage.routeName:
         return WishlistPage.route();
       case CatalogPage.routeName:
